@@ -2,4 +2,4 @@
 
 ## This app has intergrated push protocol to receive web3 notification in the frontend.
 
-<img src="https://quotefancy.com/media/wallpaper/3840x2160/30474-Abraham-Lincoln-Quote-Give-me-six-hours-to-chop-down-a-tree-and-I.jpg" width="500" height="500">
+<img src="assets/quote.jpg" width="500" height="500">
