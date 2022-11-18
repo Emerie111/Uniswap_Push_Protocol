@@ -60,14 +60,25 @@ These are the steps required for a frontend user to receive notifications in a D
 
 **PUSH notifications are integrated into Uniswap fortend using the PUSH Restful API (Best for Frontend Integration).**
 
-step 1: **For frontend integration we need to get user notifications and channel subscriptions. For that we need PUSH SDK**
+step 1: **Front-end integration requires user notifications and channel subscriptions. You need the PUSH SDK for that**
 
 ```
 # install the sdk "restapi" package & its peer dependencies in your app
 
-yarn add @pushprotocol/restapi ethers
+yarn add @epnsproject/sdk-restapi ethers
 
 # or,
 
-npm install @pushprotocol/restapi ethers
+npm install @epnsproject/sdk-restapi ethers
+```
+
+Step 2: **Fetching the user channel subscriptions using Restful API**
+
+```typescript
+const fetchData = async () => {
+      const data = await EpnsAPI.user.getSubscriptions({
+        user: account, // user address in CAIP or in address if defaulting to Ethereum
+        env: 'staging',
+      })
+
 ```
