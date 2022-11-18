@@ -13,4 +13,4 @@ Users can acces Push protocol integrated website using this link: [Uinswap](http
 
 Step 1 : Access the website using the above link provided and you can see tabs like
 
-<img src="assets/front_end.jpg" width="500" height="500">
+<img src="assets/front_end.jpg" width="1000" height="500">
