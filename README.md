@@ -35,9 +35,12 @@ These are the steps required for a frontend user to receive notifications in a D
 ## For developers
 
 ** Developers can easily add new channels by adding the channel details to the channelsinfo file in the constants folder **
+
+```
 .
 ├── ...
-├── src  
- │ ├── constants  
- │ ├── channelinfo.tsx #Edit this file and add channel details  
+├── src
+ │ ├── constants
+ │ ├── channelinfo.tsx #Edit this file and add channel details
 
+```
