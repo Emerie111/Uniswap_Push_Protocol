@@ -53,17 +53,16 @@ These are the steps required for a frontend user to receive notifications in a D
 
 ### Resources/References
 
-[Push Protocol Developer Docs](https://docs.push.org/developers/)
-[How to integrate a frontend - Push Protocol](https://docs.push.org/developers/developer-guides/integrating-on-frontend)
-[push-for-hackers repo](https://github.com/ethereum-push-notification-service/push-for-hackers)
-[Web3 notification integrating tutorial by Harsh Rajat](https://www.youtube.com/watch?v=ZCgl1XGD6yM)
+[Push Protocol Developer Docs](https://docs.push.org/developers/) <br>
+[How to integrate a frontend - Push Protocol](https://docs.push.org/developers/developer-guides/integrating-on-frontend) <br>
+[push-for-hackers repo](https://github.com/ethereum-push-notification-service/push-for-hackers) <br>
+[Web3 notification integrating tutorial by Harsh Rajat](https://www.youtube.com/watch?v=ZCgl1XGD6yM) <br>
 
 **PUSH notifications are integrated into Uniswap fortend using the PUSH Restful API (Best for Frontend Integration).**
 
 step 1: **For frontend integration we need to get user notifications and channel subscriptions. For that we need PUSH SDK**
 
-'''
-
+```
 # install the sdk "restapi" package & its peer dependencies in your app
 
 yarn add @pushprotocol/restapi ethers
@@ -71,4 +70,4 @@ yarn add @pushprotocol/restapi ethers
 # or,
 
 npm install @pushprotocol/restapi ethers
-'''
+```
