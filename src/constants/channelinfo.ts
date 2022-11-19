@@ -1,12 +1,12 @@
 export default [
   {
-    id: 882,
-    channel: '0x8d657c70B6F4aB242ab80938ee3ec299EDbCb94e',
-    ipfshash: 'QmRuUFHzvc8NEorzabxos8uBrukZabtBik7CARG2eWqoqH',
-    name: 'testing network',
-    info: 'nothing important',
-    url: 'https://www.google.com',
-    icon: 'https://gateway.ipfs.io/ipfs/bafybeian56ii4nmh2yd4vjkfasr6wzlkhanaeqfvfzrctjgbeqkpgu26qq/QmRuUFHzvc8NEorzabxos8uBrukZabtBik7CARG2eWqoqH',
+    id: 925,
+    channel: '0xF5512D24d4ee192838B9918EC9d60979abF323cb',
+    ipfshash: 'QmcMAHHuMnWcmv8Wka4qTgkhPMRRvEWrzBiLBUyapqQWxt',
+    name: 'Uniswap Test',
+    info: 'Testing Uniswap notifications',
+    url: 'https://app.uniswap.org',
+    icon: 'https://gateway.ipfs.io/ipfs/bafybeicti7zkrxfkyfxkz2mmltvmi3ep5vmvu45ux7qlxgletbsexmwkbm/QmcMAHHuMnWcmv8Wka4qTgkhPMRRvEWrzBiLBUyapqQWxt',
   },
   {
     id: 883,
@@ -14,7 +14,7 @@ export default [
     ipfshash: 'QmRuUFHzvc8NEorzabxos8uBrukZabtBik7CARG2eWqoqH',
     name: 'Uniswap V3 LP',
     info: 'Uniswap V3 LP NOTIFICATIONS',
-    url: 'https://www.google.com',
+    url: 'https://www.uniswap.org',
     icon: 'https://gateway.ipfs.io/ipfs/bafybeifwa73xdpo4o554p3ttx434kzelqhdvn5kyv6lqvnwg3dotkvpk4q/bafkreihm57o57h6sux6ceetgrpk4jicxjsxzw4uwqejqey7fxx47pe77ny',
   },
 ]

@@ -85,6 +85,20 @@ function WrongCard() {
     </ErrorContainer>
   )
 }
+function WrongNetwork() {
+  const theme = Theme()
+
+  return (
+    <ErrorContainer>
+      <ThemedText.DeprecatedBody color={theme.deprecated_text3} textAlign="center">
+        <img src={Logo} alt="React Logo" />
+        <div>
+          <Trans>please switch network to receive notifications.</Trans>
+        </div>
+      </ThemedText.DeprecatedBody>
+    </ErrorContainer>
+  )
+}
 
 export default function Push() {
   const yourChannel = channelinfo.map((info) => info.channel)
@@ -95,10 +109,12 @@ export default function Push() {
     setValue(newValue)
   }
   const { account, chainId, provider } = useWeb3React()
+
   const [notifications, setNotification] = useState([])
   const [channelOptStatus, setChannelOptStatus] = useState<string[]>([])
   const [usercount, setCount] = useState(1)
   // fetching the user notification
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await EpnsAPI.user.getFeeds({
@@ -143,7 +159,9 @@ export default function Push() {
     }
   }, [account])
   //
+
   const toggleWalletModal = useToggleWalletModal()
+
   const theme1 = Theme()
   const showConnectAWallet = Boolean(!account) //checking wallet connected
   return (

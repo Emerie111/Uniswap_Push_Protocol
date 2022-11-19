@@ -142,7 +142,7 @@ yarn add styled-components    #styled-components is a peerDependency. Please ins
 ## **FRONTEND WORKING**
 
 For receiving notfication user need to acces the `push protocol` integrated uniswap page. From the main page user need to access the notification page to receive notifications.
-code for notification page is available in `src\pages\Push\index.tsx'
+code for notification page is available in `src\pages\Push\index.tsx`
 
 For wallet connection and information uniswap uses `web3-react` packages. At a high level, web3-react is a state machine which ensures that certain key pieces of data (the user's current account, for example) relevant to your dApp are kept up-to-date.web3-react uses Context to efficiently store this data, and inject it wherever you need it in your application.
 
@@ -236,4 +236,4 @@ Above code will fetch user channel subscriptions and checks users subscribed to 
 
 Above code will display notifications to front end of the uniswap dapp. `@pushprotocol/uiweb` web components is used by dApp for notification displaying.
 
-For channel OPT-IN and OPT-OUT a seperate component is created. source code is available in `src\components\pushnotification'
+For channel OPT-IN and OPT-OUT a seperate component is created. source code is available in `src\components\pushnotification`.
