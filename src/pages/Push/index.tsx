@@ -148,9 +148,7 @@ export default function Push() {
   //
   const toggleWalletModal = useToggleWalletModal()
   const theme1 = Theme()
-  console.log('network:', isSupportedChain(chainId))
   const showConnectAWallet = Boolean(!account)
-  const networksupportnumber = id.includes(chainId!)
   return (
     <div>
       {showConnectAWallet && (
