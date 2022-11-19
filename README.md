@@ -60,7 +60,7 @@ These are the steps required for a frontend user to receive notifications in a D
 
 **PUSH notifications are integrated into Uniswap fortend using the PUSH Restful API (Best for Frontend Integration).**
 
-step 1: **Front-end integration requires user notifications and channel subscriptions. You need the PUSH SDK for that**
+**Front-end integration requires user notifications and channel subscriptions. You need the PUSH SDK for that**
 
 ```
 # install the sdk "restapi" package & its peer dependencies in your app
@@ -72,7 +72,7 @@ yarn add @epnsproject/sdk-restapi ethers
 npm install @epnsproject/sdk-restapi ethers
 ```
 
-Step 2: **Fetching the user channel subscriptions using Restful API**
+**Fetching the user channel subscriptions using Restful API**
 
 ```typescript
 const fetchData = async () => {
@@ -81,4 +81,58 @@ const fetchData = async () => {
         env: 'staging',
       })
 
+```
+
+This fetchData method allow us to fetch user channel subscriptions. while calling the function we are passing two parameters user(user wallet address) and env(repersenting the netwok production|testing) staging repersents test network.
+
+**Fetching the user Notifications using Restful API**
+
+```typescript
+const fetchData = async () => {
+      const data = await EpnsAPI.user.getFeeds({
+        user: `eip155:5:${account}`, // user address in CAIP or in address if defaulting to Ethereum
+        env: "staging",
+      });
+
+```
+
+This fetchData method allow us to fetch user notifications.
+
+**Subscribe channel**
+
+```typescript
+await EpnsAPI.channels.subscribe({
+  signer: library.getSigner(),
+  channelAddress: `eip155:5:${yourChannel}`, // channel address in CAIP
+  userAddress: `eip155:5:${account}`, // user address in CAIP
+  onSuccess: () => {
+    console.log('opt in success')
+  },
+  onError: () => {
+    console.error('opt in error')
+  },
+  env: 'staging',
+})
+```
+
+**Unsubscribe channel**
+
+```typescript
+await EpnsAPI.channels.unsubscribe({
+  signer: library.getSigner(),
+  channelAddress: `eip155:5:${yourChannel}`, // channel address in CAIP
+  userAddress: `eip155:5:${account}`, // user address in CAIP
+  onSuccess: () => {},
+  onError: () => {
+    console.error('opt out error')
+  },
+  env: 'staging',
+})
+```
+
+\*\* For displaying notfication in frontend pushprotocol/uiweb is needed"
+
+```
+yarn add @pushprotocol/uiweb you can install uiweb using this command
+yarn add styled-components styled-components is a peerDependency. Please install it in your dApp if you don't have it already!
 ```
