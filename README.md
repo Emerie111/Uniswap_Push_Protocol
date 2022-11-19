@@ -119,9 +119,9 @@ await EpnsAPI.channels.subscribe({
 
 ```typescript
 await EpnsAPI.channels.unsubscribe({
-  signer: library.getSigner(),
-  channelAddress: `eip155:5:${yourChannel}`, // channel address in CAIP
-  userAddress: `eip155:5:${account}`, // user address in CAIP
+  signer: library.getSigner(), // user signer address for signing the transaction.
+  channelAddress: `eip155:5:${yourChannel}`, // channel address in CAIP.
+  userAddress: `eip155:5:${account}`, // user address in CAIP.
   onSuccess: () => {},
   onError: () => {
     console.error('opt out error')
@@ -130,9 +130,13 @@ await EpnsAPI.channels.unsubscribe({
 })
 ```
 
-\*\* For displaying notfication in frontend pushprotocol/uiweb is needed"
+**For displaying notfication in frontend pushprotocol/uiweb is needed**
 
 ```
-yarn add @pushprotocol/uiweb you can install uiweb using this command
-yarn add styled-components styled-components is a peerDependency. Please install it in your dApp if you don't have it already!
+yarn add @pushprotocol/uiweb  #you can install uiweb using this command
+yarn add styled-components    #styled-components is a peerDependency. Please install it in your dApp if you don't have it already!
 ```
+
+`@pushprotocol/uiweb` has needed `@pushprotocol/restapi` package also. Here we are using `epnsproject/sdk-restapi` and we need to make some changes in uiweb to work with epnsproject/sdk-restapi
+
+## **FRONTEND WORKING**
