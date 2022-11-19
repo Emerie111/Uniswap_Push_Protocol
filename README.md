@@ -140,3 +140,100 @@ yarn add styled-components    #styled-components is a peerDependency. Please ins
 `@pushprotocol/uiweb` has needed `@pushprotocol/restapi` package also. Here we are using `epnsproject/sdk-restapi` and we need to make some changes in uiweb to work with epnsproject/sdk-restapi
 
 ## **FRONTEND WORKING**
+
+For receiving notfication user need to acces the `push protocol` integrated uniswap page. From the main page user need to access the notification page to receive notifications.
+code for notification page is available in `src\pages\Push\index.tsx'
+
+For wallet connection and information uniswap uses `web3-react` packages. At a high level, web3-react is a state machine which ensures that certain key pieces of data (the user's current account, for example) relevant to your dApp are kept up-to-date.web3-react uses Context to efficiently store this data, and inject it wherever you need it in your application.
+
+```typescript
+import { useWeb3React } from '@web3-react/core'
+const { account, chainId, provider } = useWeb3React()
+```
+
+account: current wallet address of wallet connect<br>
+chainId: network chainid of current connection <br>
+provider: used to interact with wallet <br>
+
+Here ` useState()` is react Hook track state in a function component like notifications, user subscribed channels etc.<br>
+
+For fetching the information using push restapi `useEffect` hook is used
+
+```typescript
+useEffect(() => {
+  const fetchData = async () => {
+    const data = await EpnsAPI.user.getFeeds({
+      user: `eip155:${chainId}:${account}`, // user address in CAIP or in address if defaulting to Ethereum
+      env: 'staging',
+    })
+    setNotification(data)
+    setCount(usercount + 1)
+  }
+  if (account) {
+    console.log('Calling user details')
+    fetchData().catch(console.error)
+  }
+}, [account])
+```
+
+Above code will fetch the user noftications. chainId and account information are provided from the `web3-react`.
+<br>
+
+```typescript
+// fetching user channel subscriptions
+useEffect(() => {
+  const fetchData = async () => {
+    const data = await EpnsAPI.user.getSubscriptions({
+      user: account, // user address in CAIP or in address if defaulting to Ethereum
+      env: 'staging',
+    })
+
+    let channels: string[] = []
+    channels = []
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i]
+      console.log(element.channel)
+      if (yourChannel.includes(element.channel)) {
+        // setChannelOptStatus([])
+        if (!channels.includes(element.channel)) {
+          channels.push(element.channel)
+        }
+      }
+    }
+    setChannelOptStatus(channels)
+  }
+
+  if (account) {
+    console.log('Calling user details')
+    fetchData().catch(console.error)
+  }
+}, [account])
+```
+
+Above code will fetch user channel subscriptions and checks users subscribed to dapp related channels.
+<br>
+
+```typescript
+ {notifications.map((oneNotification, i) => {
+                  const { cta, title, message, app, icon, image, url, blockchain, secret, notification } =
+                    oneNotification
+                  return (
+                    <NotificationItem
+                      key={`notif-${i}`}
+                      notificationTitle={secret ? notification['title'] : title}
+                      notificationBody={secret ? notification['body'] : message}
+                      cta={cta}
+                      app={app}
+                      icon={icon}
+                      image={image}
+                      url={url}
+                      theme={'light'}
+                      chainName={blockchain as chainNameType}
+                    />
+                  )
+                }
+```
+
+Above code will display notifications to front end of the uniswap dapp. `@pushprotocol/uiweb` web components is used by dApp for notification displaying.
+
+For channel OPT-IN and OPT-OUT a seperate component is created. source code is available in `src\components\pushnotification'

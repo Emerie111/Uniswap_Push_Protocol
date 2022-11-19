@@ -8,7 +8,6 @@ import { ButtonPrimary } from 'components/Button'
 import { useToggleWalletModal } from 'state/application/hooks'
 import styled, { useTheme as Theme } from 'styled-components/macro'
 import { ThemedText } from 'theme'
-import { isSupportedChain } from 'constants/chains'
 import Logo from '../../assets/images/icons8-bell-64.png'
 import channelinfo from '../../constants/channelinfo'
 import * as React from 'react'
@@ -89,7 +88,6 @@ function WrongCard() {
 
 export default function Push() {
   const yourChannel = channelinfo.map((info) => info.channel)
-  const id: number[] | undefined = [5, 80001, 137, 1, 5]
   const theme = useTheme()
   const [value, setValue] = React.useState(0)
 
@@ -100,6 +98,7 @@ export default function Push() {
   const [notifications, setNotification] = useState([])
   const [channelOptStatus, setChannelOptStatus] = useState<string[]>([])
   const [usercount, setCount] = useState(1)
+  // fetching the user notification
   useEffect(() => {
     const fetchData = async () => {
       const data = await EpnsAPI.user.getFeeds({
@@ -108,16 +107,14 @@ export default function Push() {
       })
       setNotification(data)
       setCount(usercount + 1)
-      console.log('data:', data)
-      console.log('account', account)
     }
     if (account) {
       console.log('Calling user details')
       fetchData().catch(console.error)
     }
   }, [account])
-  //
 
+  // fetching user channel subscriptions
   useEffect(() => {
     const fetchData = async () => {
       const data = await EpnsAPI.user.getSubscriptions({
@@ -148,7 +145,7 @@ export default function Push() {
   //
   const toggleWalletModal = useToggleWalletModal()
   const theme1 = Theme()
-  const showConnectAWallet = Boolean(!account)
+  const showConnectAWallet = Boolean(!account) //checking wallet connected
   return (
     <div>
       {showConnectAWallet && (
